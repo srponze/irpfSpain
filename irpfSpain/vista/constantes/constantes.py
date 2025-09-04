@@ -1,0 +1,2 @@
+ACTIVOS = 0
+DIVISAS = 1
