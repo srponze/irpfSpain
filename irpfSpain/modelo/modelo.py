@@ -92,7 +92,7 @@ class Modelo:
     def realizarCalculos(self) -> None:
 
         self.listaDivisas = Funciones.obtenerListaDivisas(self.rutaTransaction)
-        self.listaDivisasExtranjeras = self.listaDivisas
+        self.listaDivisasExtranjeras = copy.deepcopy(self.listaDivisas)
         if "EUR" in self.listaDivisasExtranjeras:
             self.listaDivisasExtranjeras.remove("EUR")
 
