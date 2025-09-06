@@ -6,6 +6,7 @@ from collections import defaultdict, deque
 from pathlib import Path
 from typing import DefaultDict, Deque, Dict, List, Tuple
 
+from irpfSpain.modelo.constantes.mensajesErroresDocumentos import *
 from irpfSpain.modelo.csv.csv import Csv
 from irpfSpain.modelo.csv.estrategiaActivos import (
     EstrategiaActivos as Csv_EstrategiaActivos,
@@ -26,7 +27,6 @@ from irpfSpain.modelo.fifo.estrategiaDivisas import (
 )
 from irpfSpain.modelo.fifo.fifo import Fifo
 from irpfSpain.modelo.funciones import Funciones
-from irpfSpain.modelo.mensajes.mensajesErroresDocumentos import *
 
 
 class Modelo:
