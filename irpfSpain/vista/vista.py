@@ -4,7 +4,6 @@ from typing import Dict
 from inquirer import shortcuts
 
 from irpfSpain.vista.analisis import Analisis
-from irpfSpain.vista.ayuda import Ayuda
 from irpfSpain.vista.constantes.mensajes import *
 from irpfSpain.vista.resultados import Resultados
 
@@ -13,7 +12,6 @@ class Vista:
 
     def __init__(self, controlador) -> None:
         self.controlador = controlador
-        self.ayuda = Ayuda()
         self.analisis = Analisis(controlador)
         self.resultados = Resultados()
 
@@ -29,8 +27,6 @@ class Vista:
                 if self.analisis.mostrarMenu():
                     break
             elif opcion == OPCIONES_PRINCIPALES[1]:
-                self.ayuda.mostrarMenu()
-            elif opcion == OPCIONES_PRINCIPALES[2]:
                 sys.exit()
 
     def mostrarResultados(self) -> None:

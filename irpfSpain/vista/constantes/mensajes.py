@@ -6,7 +6,7 @@ SEPARACION = "-" * 30
 ## Mensajes Menu Principal
 
 TITULO_PRINCIPAL = "\n########## IRPF SPAIN ##########"
-OPCIONES_PRINCIPALES = ["Analizar documentos", "Ayuda (Pendiente)", "Salir"]
+OPCIONES_PRINCIPALES = ["Analizar documentos", "Salir"]
 
 ## Mensajes Analisis
 
