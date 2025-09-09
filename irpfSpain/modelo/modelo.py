@@ -76,7 +76,16 @@ class Modelo:
         self.añoRenta = int(añoRenta)
         return errores
 
-    def obtenerDatos(self) -> Dict:
+    def realizarCalculos(self) -> Dict:
+
+        self.listaDivisas = Funciones.obtenerListaDivisas(self.rutaTransaction)
+        self.listaDivisasExtranjeras = copy.deepcopy(self.listaDivisas)
+        if "EUR" in self.listaDivisasExtranjeras:
+            self.listaDivisasExtranjeras.remove("EUR")
+
+        self.calcularActivos()
+        self.calcularDivisas()
+
         return {
             "transaccionesActivos": self.transaccionesActivos,
             "transaccionesDivisas": self.transaccionesDivisas,
@@ -88,16 +97,6 @@ class Modelo:
             "listaPosicionesDivisas": self.listaPosicionesDivisas,
             "listaMovimientosSinCompraDivisas": self.listaMovimientosSinCompraDivisas,
         }
-
-    def realizarCalculos(self) -> None:
-
-        self.listaDivisas = Funciones.obtenerListaDivisas(self.rutaTransaction)
-        self.listaDivisasExtranjeras = copy.deepcopy(self.listaDivisas)
-        if "EUR" in self.listaDivisasExtranjeras:
-            self.listaDivisasExtranjeras.remove("EUR")
-
-        self.calcularActivos()
-        self.calcularDivisas()
 
     def calcularActivos(self) -> None:
         self.csv.establecerEstrategia(Csv_EstrategiaActivos())

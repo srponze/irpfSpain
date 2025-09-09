@@ -1,5 +1,4 @@
-import sys
-from typing import DefaultDict, Deque, Dict, List, Tuple
+from typing import DefaultDict, Deque, List, Tuple
 
 from inquirer import shortcuts
 
@@ -15,60 +14,23 @@ class Resultados:
     def __init__(self):
         self.impresora = Impresora()
 
-    def mostrarMenu(self, datos: Dict):
-        while True:
-            print(TITULO_RESULTADOS)
-            if datos["listaMovimientosSinCompraActivos"]:
-                print(MENSAJE_ERRORES_MOVIMIENTOS_ACTIVOS)
-            if datos["listaMovimientosSinCompraDivisas"]:
-                print(MENSAJE_ERRORES_MOVIMIENTOS_DIVISAS)
-            print(SEPARACION)
+    def mostrarComprobacionErrores(
+        self,
+        listaMovimientosSinCompraActivos: List[Movimiento],
+        listaMovimientosSinCompraDivisas: List[Movimiento],
+    ):
+        print(TITULO_RESULTADOS)
+        if listaMovimientosSinCompraActivos:
+            print(MENSAJE_ERRORES_MOVIMIENTOS_ACTIVOS)
+        if listaMovimientosSinCompraDivisas:
+            print(MENSAJE_ERRORES_MOVIMIENTOS_DIVISAS)
+        print(SEPARACION)
 
-            opcion = shortcuts.list_input(
-                message=MENSAJE_OPCIONES_RESULTADOS,
-                choices=OPCIONES_RESULTADOS,
-            )
-
-            if opcion == OPCIONES_RESULTADOS[0]:
-                self.movimientos(
-                    TITULO_MOVIMIENTOS_ACTIVOS,
-                    MENSAJE_CABECERA_ACTIVOS,
-                    datos["listaMovimientosActivos"],
-                    ACTIVOS,
-                    TITULO_POSICIONES_ACTIVOS,
-                    datos["listaPosicionesActivos"],
-                    datos["listaMovimientosSinCompraActivos"],
-                )
-
-            elif opcion == OPCIONES_RESULTADOS[1]:
-                self.movimientos(
-                    TITULO_MOVIMIENTOS_DIVISAS,
-                    MENSAJE_CABECERA_DIVISAS,
-                    datos["listaMovimientosDivisas"],
-                    DIVISAS,
-                    TITULO_POSICIONES_DIVISAS,
-                    datos["listaPosicionesDivisas"],
-                    datos["listaMovimientosSinCompraDivisas"],
-                )
-
-            elif opcion == OPCIONES_RESULTADOS[2]:
-                self.transacciones(
-                    TITULO_TRANSACCIONES_ACTIVOS,
-                    MENSAJE_CABECERA_ACTIVOS,
-                    datos["transaccionesActivos"],
-                    ACTIVOS,
-                )
-            elif opcion == OPCIONES_RESULTADOS[3]:
-                self.transacciones(
-                    TITULO_TRANSACCIONES_DIVISAS,
-                    MENSAJE_CABECERA_DIVISAS,
-                    datos["transaccionesDivisas"],
-                    DIVISAS,
-                )
-            elif opcion == OPCIONES_RESULTADOS[4]:
-                return False
-            elif opcion == OPCIONES_RESULTADOS[5]:
-                sys.exit()
+    def mostrarMenu(self) -> str:
+        return shortcuts.list_input(
+            message=MENSAJE_OPCIONES_RESULTADOS,
+            choices=OPCIONES_RESULTADOS,
+        )
 
     def movimientos(
         self,
@@ -79,7 +41,7 @@ class Resultados:
         tituloPosiciones: str,
         listaPosiciones: DefaultDict[Tuple, Deque[Movimiento]],
         listaMovimientosSinCompra: List[Movimiento],
-    ) -> None:
+    ) -> str:
 
         print(tituloMovimientos)
         print(mensajeCabecera)
@@ -97,13 +59,10 @@ class Resultados:
                 listaMovimientosSinCompra, codigoImpresion
             )
         print()
-        opcion = shortcuts.list_input(
+        return shortcuts.list_input(
             message=MENSAJE_OPCIONES,
             choices=OPCIONES_AUXILIARES_RESULTADOS,
         )
-
-        if opcion == OPCIONES_AUXILIARES_RESULTADOS[1]:
-            sys.exit()
 
     def transacciones(
         self,
@@ -111,15 +70,12 @@ class Resultados:
         mensajeCabecera: str,
         transacciones: DefaultDict[Tuple, List[Transaccion]],
         codigoImpresion: int,
-    ) -> None:
+    ) -> str:
         print(tituloTransacciones)
         print(mensajeCabecera)
         self.impresora.imprimirTransacciones(transacciones, codigoImpresion)
         print()
-        opcion = shortcuts.list_input(
+        return shortcuts.list_input(
             message=MENSAJE_OPCIONES,
             choices=OPCIONES_AUXILIARES_RESULTADOS,
         )
-
-        if opcion == OPCIONES_AUXILIARES_RESULTADOS[1]:
-            sys.exit()
