@@ -2,9 +2,9 @@ import copy
 from collections import defaultdict, deque
 from typing import DefaultDict, Deque, List, Tuple
 
-from irpfSpain.modelo.entidades.movimiento import Movimiento
-from irpfSpain.modelo.entidades.transaccion import Transaccion
-from irpfSpain.modelo.fifo.estrategia import Estrategia
+from ..entidades.movimiento import Movimiento
+from ..entidades.transaccion import Transaccion
+from .estrategia import Estrategia
 
 
 class EstrategiaActivos(Estrategia):

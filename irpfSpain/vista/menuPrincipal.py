@@ -1,6 +1,6 @@
 from inquirer import shortcuts
 
-from irpfSpain.vista.constantes.mensajes import *
+from .constantes.mensajes import *
 
 
 class MenuPrincipal:

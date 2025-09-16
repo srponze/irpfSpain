@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
-from irpfSpain.modelo.entidades.movimiento import Movimiento
-from irpfSpain.modelo.fifo.estrategia import Estrategia
+from ..entidades.movimiento import Movimiento
+from .estrategia import Estrategia
 
 
 class Fifo:

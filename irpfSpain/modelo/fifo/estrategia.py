@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Deque, List, Tuple
 
-from irpfSpain.modelo.entidades.movimiento import Movimiento
+from ..entidades.movimiento import Movimiento
 
 
 class Estrategia(ABC):

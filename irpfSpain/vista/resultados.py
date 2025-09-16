@@ -2,11 +2,11 @@ from typing import DefaultDict, Deque, List, Tuple
 
 from inquirer import shortcuts
 
-from irpfSpain.modelo.entidades.movimiento import Movimiento
-from irpfSpain.modelo.entidades.transaccion import Transaccion
-from irpfSpain.vista.constantes.constantes import *
-from irpfSpain.vista.constantes.mensajes import *
-from irpfSpain.vista.impresora import Impresora
+from ..modelo.entidades.movimiento import Movimiento
+from ..modelo.entidades.transaccion import Transaccion
+from .constantes.constantes import *
+from .constantes.mensajes import *
+from .impresora import Impresora
 
 
 class Resultados:

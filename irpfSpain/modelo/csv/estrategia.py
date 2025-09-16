@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod
 from datetime import date, time
 from typing import List
 
-from irpfSpain.modelo.csv.constantes.columnas import *
-from irpfSpain.modelo.entidades.movimiento import Movimiento
+from ..entidades.movimiento import Movimiento
+from .constantes.columnas import *
 
 
 class Estrategia(ABC):

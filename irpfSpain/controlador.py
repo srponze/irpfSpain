@@ -1,12 +1,12 @@
 import sys
 from typing import Callable, Dict
 
-from irpfSpain.modelo.modelo import Modelo
-from irpfSpain.vista.analisis import Analisis
-from irpfSpain.vista.constantes.constantes import *
-from irpfSpain.vista.constantes.mensajes import *
-from irpfSpain.vista.menuPrincipal import MenuPrincipal
-from irpfSpain.vista.resultados import Resultados
+from .modelo.modelo import Modelo
+from .vista.analisis import Analisis
+from .vista.constantes.constantes import *
+from .vista.constantes.mensajes import *
+from .vista.menuPrincipal import MenuPrincipal
+from .vista.resultados import Resultados
 
 
 class Controlador:

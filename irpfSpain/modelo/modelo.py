@@ -6,27 +6,19 @@ from collections import defaultdict, deque
 from pathlib import Path
 from typing import DefaultDict, Deque, Dict, List, Tuple
 
-from irpfSpain.modelo.constantes.mensajesErroresDocumentos import *
-from irpfSpain.modelo.csv.csv import Csv
-from irpfSpain.modelo.csv.estrategiaActivos import (
-    EstrategiaActivos as Csv_EstrategiaActivos,
-)
-from irpfSpain.modelo.csv.estrategiaActivosDivisas import (
+from .constantes.mensajesErroresDocumentos import *
+from .csv.csv import Csv
+from .csv.estrategiaActivos import EstrategiaActivos as Csv_EstrategiaActivos
+from .csv.estrategiaActivosDivisas import (
     EstrategiaActivosDivisas as Csv_EstrategiaActivosDivisas,
 )
-from irpfSpain.modelo.csv.estrategiaDivisas import (
-    EstrategiaDivisas as Csv_EstrategiaDivisas,
-)
-from irpfSpain.modelo.entidades.movimiento import Movimiento
-from irpfSpain.modelo.entidades.transaccion import Transaccion
-from irpfSpain.modelo.fifo.estrategiaActivos import (
-    EstrategiaActivos as Fifo_EstrategiaActivos,
-)
-from irpfSpain.modelo.fifo.estrategiaDivisas import (
-    EstrategiaDivisas as Fifo_EstrategiaDivisas,
-)
-from irpfSpain.modelo.fifo.fifo import Fifo
-from irpfSpain.modelo.funciones import Funciones
+from .csv.estrategiaDivisas import EstrategiaDivisas as Csv_EstrategiaDivisas
+from .entidades.movimiento import Movimiento
+from .entidades.transaccion import Transaccion
+from .fifo.estrategiaActivos import EstrategiaActivos as Fifo_EstrategiaActivos
+from .fifo.estrategiaDivisas import EstrategiaDivisas as Fifo_EstrategiaDivisas
+from .fifo.fifo import Fifo
+from .funciones import Funciones
 
 
 class Modelo:

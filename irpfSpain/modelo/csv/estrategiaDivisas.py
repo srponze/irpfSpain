@@ -1,10 +1,10 @@
 import csv
 from typing import List
 
-from irpfSpain.modelo.csv.constantes.columnas import *
-from irpfSpain.modelo.csv.constantes.constantes import *
-from irpfSpain.modelo.csv.estrategia import Estrategia
-from irpfSpain.modelo.entidades.movimiento import Movimiento
+from ..entidades.movimiento import Movimiento
+from .constantes.columnas import *
+from .constantes.constantes import *
+from .estrategia import Estrategia
 
 
 class EstrategiaDivisas(Estrategia):

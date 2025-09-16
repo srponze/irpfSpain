@@ -1,4 +1,4 @@
-from irpfSpain.modelo.entidades.movimiento import Movimiento
+from .movimiento import Movimiento
 
 
 class Transaccion:

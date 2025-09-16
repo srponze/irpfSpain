@@ -1,7 +1,7 @@
 from typing import List
 
-from irpfSpain.modelo.csv.estrategia import Estrategia
-from irpfSpain.modelo.entidades.movimiento import Movimiento
+from ..entidades.movimiento import Movimiento
+from .estrategia import Estrategia
 
 
 class Csv:
