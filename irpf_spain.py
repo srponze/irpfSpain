@@ -15,7 +15,7 @@ from constantes import (
 )
 from fifo.fifo import fifo
 from renta_web import RentaWeb
-from tablas.account import leer_account
+from tablas.account import leer_account, leer_account_bce
 from tablas.mov_activos import obtener_mov_activos
 from tablas.mov_divisas import obtener_mov_divisas
 from tablas.transactions import leer_transactions, leer_transactions_bce
@@ -26,11 +26,12 @@ def main(args: argparse.Namespace) -> None:  # noqa: C901, PLR0912, PLR0915
     if args.all:
         pd.options.display.max_rows = 10000
 
-    account: DataFrame = leer_account(Path(args.Account))
     if args.bce:
         transactions: DataFrame = leer_transactions_bce(Path(args.Transactions))
+        account: DataFrame = leer_account_bce(Path(args.Account))
     else:
         transactions: DataFrame = leer_transactions(Path(args.Transactions))
+        account: DataFrame = leer_account(Path(args.Account))
 
     if account.empty or transactions.empty:
         print("Account o Transaction estan vacios")

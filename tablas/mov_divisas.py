@@ -56,8 +56,8 @@ def obtener_mov_divisas(
         lambda x: Decimal(1) / Decimal(x) if x != "" else Decimal(0),
     )
     account[VALOR_EUR] = account[VALOR_LOCAL] * account[TIPO]
-    account[COMISIONES] = Decimal(0)
-    account[TOTAL] = account[VALOR_EUR]
+    account[COMISIONES] = Decimal(-10) - abs(account[VALOR_EUR] * Decimal("0.0025"))
+    account[TOTAL] = account[VALOR_EUR] + account[COMISIONES]
     return (
         pd.concat([transactions, account], axis=0)
         .sort_values(by=FECHA_HORA, ascending=False)
