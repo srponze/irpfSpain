@@ -8,9 +8,6 @@ from constantes import (
     GANANCIA_PERDIDA,
     PRECIO_ADQUISICION,
     PRECIO_TRANSMISION,
-    TIPO,
-    TIPO_ADQUISICION,
-    TIPO_TRANSMISION,
     TOTAL,
     TOTAL_ADQUISICION,
     TOTAL_TRANSMISION,
@@ -50,8 +47,6 @@ def redondear_decimales_operaciones(operaciones: DataFrame, modo: str) -> DataFr
         operaciones[VALOR_EUR_TRANSMISION],
         dos,
     )
-    operaciones[TIPO_ADQUISICION] = redondear(operaciones[TIPO_ADQUISICION], cuatro)
-    operaciones[TIPO_TRANSMISION] = redondear(operaciones[TIPO_TRANSMISION], cuatro)
     operaciones[COMISIONES_ADQUISICION] = redondear(
         operaciones[COMISIONES_ADQUISICION],
         dos,
@@ -69,9 +64,7 @@ def redondear_decimales_operaciones(operaciones: DataFrame, modo: str) -> DataFr
 
 def redondear_decimales_movimientos(movimientos: DataFrame) -> DataFrame:
     dos = Decimal("0.01")
-    cuatro = Decimal("0.0001")
     movimientos[VALOR_EUR] = redondear(movimientos[VALOR_EUR], dos)
-    movimientos[TIPO] = redondear(movimientos[TIPO], cuatro)
     movimientos[TOTAL] = redondear(movimientos[TOTAL], dos)
 
     return movimientos

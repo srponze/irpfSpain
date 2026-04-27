@@ -63,7 +63,7 @@ def fifo(
         lista_posiciones_actuales.extend(list(cola))
         lista_global_operaciones.extend(lista_operaciones)
 
-    dataframe_global_operaciones: DataFrame = (
+    df_global_operaciones: DataFrame = (
         redondear_decimales_operaciones(
             DataFrame(lista_global_operaciones)
             .sort_values(by=[FECHA_HORA_TRANSMISION], ascending=False)
@@ -74,7 +74,7 @@ def fifo(
         else None
     )
 
-    dataframe_posiciones_actuales: DataFrame = (
+    df_posiciones_actuales: DataFrame = (
         redondear_decimales_movimientos(
             DataFrame(lista_posiciones_actuales)
             .sort_values(
@@ -87,7 +87,7 @@ def fifo(
         else None
     )
 
-    dataframe_movimientos_sin_compra: DataFrame = (
+    df_movimientos_sin_compra: DataFrame = (
         redondear_decimales_movimientos(
             DataFrame(
                 lista_movimientos_sin_compra,
@@ -100,7 +100,7 @@ def fifo(
     )
 
     return (
-        dataframe_global_operaciones,
-        dataframe_posiciones_actuales,
-        dataframe_movimientos_sin_compra,
+        df_global_operaciones,
+        df_posiciones_actuales,
+        df_movimientos_sin_compra,
     )

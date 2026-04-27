@@ -33,10 +33,10 @@ def obtener_mov_divisas(
     transactions[PRECIO] = Decimal(1)
     transactions[VALOR_LOCAL] = -transactions[VALOR_LOCAL]
     transactions[TIPO] = transactions[TIPO].apply(
-        lambda x: Decimal(1) / Decimal(x) if x != "" else Decimal(1),
+        lambda x: Decimal(x) if x != "" else Decimal(1),
     )
     transactions[COMISIONES] = Decimal(0)
-    transactions[VALOR_EUR] = transactions[VALOR_LOCAL] * transactions[TIPO]
+    transactions[VALOR_EUR] = transactions[VALOR_LOCAL] / transactions[TIPO]
     transactions[TOTAL] = transactions[VALOR_EUR] + transactions[COMISIONES]
     transactions: DataFrame = pd.concat(
         [transactions[FECHA_HORA], transactions.iloc[:, 1], transactions.iloc[:, 4:]],
@@ -53,9 +53,9 @@ def obtener_mov_divisas(
     account[VALOR_LOCAL] = -account[VALOR_LOCAL]
     account[PRECIO] = Decimal(1)
     account[TIPO] = account[TIPO].apply(
-        lambda x: Decimal(1) / Decimal(x) if x != "" else Decimal(0),
+        lambda x: Decimal(x) if x != "" else Decimal(1),
     )
-    account[VALOR_EUR] = account[VALOR_LOCAL] * account[TIPO]
+    account[VALOR_EUR] = account[VALOR_LOCAL] / account[TIPO]
     account[COMISIONES] = Decimal(-10) - abs(account[VALOR_EUR] * Decimal("0.0025"))
     account[TOTAL] = account[VALOR_EUR] + account[COMISIONES]
     return (

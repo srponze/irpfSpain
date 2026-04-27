@@ -14,8 +14,8 @@ def obtener_mov_activos(_transactions: DataFrame) -> DataFrame:
     transactions[VALOR_LOCAL] = decimal(transactions[VALOR_LOCAL])
     transactions[COMISIONES] = decimal(transactions[COMISIONES])
     transactions[TIPO] = transactions[TIPO].apply(
-        lambda x: Decimal(1) / Decimal(x) if x != "" else Decimal(1),
+        lambda x: Decimal(x) if x != "" else Decimal(1),
     )
-    transactions[VALOR_EUR] = transactions[VALOR_LOCAL] * transactions[TIPO]
+    transactions[VALOR_EUR] = transactions[VALOR_LOCAL] / transactions[TIPO]
     transactions[TOTAL] = transactions[VALOR_EUR] + transactions[COMISIONES]
     return transactions
