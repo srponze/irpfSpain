@@ -11,7 +11,7 @@ class RentaWeb:
         self.tiempo_espera: int = 500
 
         self.p = sync_playwright().start()
-        self.browser = self.p.chromium.launch(channel="chromium", headless=False)
+        self.browser = self.p.chromium.launch(channel="chrome", headless=False)
         self.page = self.browser.new_page()
         self.page.goto(
             "https://sede.agenciatributaria.gob.es/static_files/common/html/selector_acceso/SelectorAccesos.html?rep=S&ref=%2Fwlpl%2FDASR-CORE%2FAccesoDR2025RVlt&aut=CPRE",
